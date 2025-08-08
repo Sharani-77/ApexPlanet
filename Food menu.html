@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Menu</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff8f0;
+        }
+
+        header {
+            background: linear-gradient(45deg, #ff6347, #ff4500);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .menu {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .menu-section {
+            margin-bottom: 40px;
+        }
+
+        .menu-section h2 {
+            border-bottom: 3px solid #ff6347;
+            padding-bottom: 5px;
+            color: #ff6347;
+            font-size: 1.8rem;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed #ccc;
+            transition: background 0.3s;
+        }
+
+        .menu-item:hover {
+            background: #fff3e8;
+            transform: scale(1.01);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 15px;
+            transition: transform 0.3s;
+        }
+
+        .menu-item img:hover {
+            transform: scale(1.2);
+        }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            font-size: 1.1rem;
+        }
+
+        .price-order {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            background: #ffe6cc;
+            border-radius: 8px;
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+            color: #d35400;
+            font-weight: bold;
+        }
+
+        /* Buttons */
+        .currency-toggle,
+        .order-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .currency-toggle:hover,
+        .order-btn:hover {
+            background: #e94e2e;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🍽 Delicious Food Menu</h1>
+    </header>
+
+    <div class="menu">
+        <button class="currency-toggle" onclick="toggleCurrency()">Switch Currency</button>
+
+        <!-- Starters -->
+        <div class="menu-section">
+            <h2>Starters</h2>
+            <div class="menu-item">
+                <div class="item-info">
+                    <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2022/11/tomato-soup-recipe.jpg" alt="Tomato Soup">
+                    <span>Tomato Soup <span class="highlight">Popular</span></span>
+                </div>
+                <div class="price-order">
+                    <span class="price" data-usd="2" data-inr="160">₹160</span>
+                    <button class="order-btn" onclick="placeOrder('Tomato Soup')">Order</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <img src="https://www.spicebangla.com/wp-content/uploads/2024/06/Spring-Roll-Recipe.jpg" alt="Spring Rolls">
+                    <span>Spring Rolls</span>
+                </div>
+                <div class="price-order">
+                    <span class="price" data-usd="2" data-inr="160">₹160</span>
+                    <button class="order-btn" onclick="placeOrder('Spring Rolls')">Order</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <img src="https://thekittchen.com/wp-content/uploads/2017/01/The-Best-Garlic-Bread-5.jpg" alt="Garlic Bread">
+                    <span>Garlic Bread</span>
+                </div>
+                <div class="price-order">
+                    <span class="price" data-usd="1" data-inr="80">₹80</span>
+                    <button class="order-btn" onclick="placeOrder('Garlic Bread')">Order</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Course -->
+        <div class="menu-section">
+            <h2>Main Course</h2>
+            <div class="menu-item">
+                <div class="item-info">
+                    <img src="https://www.spiceindiaonline.com/wp-content/uploads/2021/05/Tandoori-Chicken-20.jpg" alt="Grilled Chicken">
+                    <span>Grilled Chicken</span>
+                </div>
+                <div class="price-order">
+                    <span class="price" data-usd="3" data-inr="240">₹240</span>
+                    <button class="order-btn" onclick="placeOrder('Grilled Chicken')">Order</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <img src="https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01.jpg" alt="Dum Biriyani">
+                    <span>Dum Biriyani</span>
+                </div>
+                <div class="price-order">
+                    <span class="price" data-usd="3" data-inr="240">₹240</span>
+                    <button class="order-btn" onclick="placeOrder('Veggie Pasta')">Order</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <img src="https://chiruss.in/wp-content/uploads/2024/11/Nqhdq2gO.jpeg " alt="Cheese Pizza">
+                    <span>Cheese Pizza</span>
+                </div>
+                <div class="price-order">
+                    <span class="price" data-usd="4" data-inr="320">₹320</span>
+                    <button class="order-btn" onclick="placeOrder('Cheese Pizza')">Order</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <img src="https://www.thecookierookie.com/wp-content/uploads/2022/08/Featured-Indian-butter-chicken-1.jpg" alt="Butter Chicken">
+                    <span>Butter Chicken</span>
+                </div>
+                <div class="price-order">
+                    <span class="price" data-usd="3" data-inr="240">₹240</span>
+                    <button class="order-btn" onclick="placeOrder('Butter Chicken')">Order</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <img src="https://araizrasoi.com/wp-content/uploads/2024/06/28.webp" alt="Tandoori Roti">
+                    <span>Tandoori Roti</span>
+                </div>
+                <div class="price-order">
+                    <span class="price" data-usd="1" data-inr="80">₹80</span>
+                    <button class="order-btn" onclick="placeOrder('Tandoori Roti')">Order</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desserts -->
+        <div class="menu-section">
+            <h2>Desserts</h2>
+            <div class="menu-item">
+                <div class="item-info">
+                    <img src="https://bluebowlrecipes.com/wp-content/uploads/2023/08/chocolate-truffle-cake-8844.jpg" alt="Chocolate Cake">
+                    <span>Chocolate Cake</span>
+                </div>
+                <div class="price-order">
+                    <span class="price" data-usd="3" data-inr="240">₹240</span>
+                    <button class="order-btn" onclick="placeOrder('Chocolate Cake')">Order</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <img src="https://buttermilkbysam.com/wp-content/uploads/2024/01/raspberry-ice-cream-3.jpg" alt="Ice Cream">
+                    <span>Ice Cream</span>
+                </div>
+                <div class="price-order">
+                    <span class="price" data-usd="2.5" data-inr="180">₹180</span>
+                    <button class="order-btn" onclick="placeOrder('Ice Cream')">Order</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <img src="https://www.hipmamasplace.com/wp-content/uploads/2021/06/199259152_166663622165057_6223652316946896551_n.jpg" alt="Fruit Salad">
+                    <span>Fruit Salad</span>
+                </div>
+                <div class="price-order">
+                    <span class="price" data-usd="1.5" data-inr="140">₹140</span>
+                    <button class="order-btn" onclick="placeOrder('Fruit Salad')">Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currencyInINR = true;
+
+        function toggleCurrency() {
+            const prices = document.querySelectorAll('.price');
+            prices.forEach(price => {
+                if (currencyInINR) {
+                    price.textContent = `$${price.getAttribute('data-usd')}`;
+                } else {
+                    price.textContent = `₹${price.getAttribute('data-inr')}`;
+                }
+            });
+            currencyInINR = !currencyInINR;
+        }
+
+        function placeOrder(itemName) {
+            alert(`✅ Your order for "${itemName}" has been placed!`);
+        }
+    </script>
+
+</body>
+</html>
